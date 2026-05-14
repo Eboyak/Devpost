@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Digital Grimoire</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>My Digital Grimoire</h1>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#grimoire-index">Grimoire Index</a>
+        <a href="#rituals">Rituals</a>
+        <a href="#myths">Myths</a>
+        <a href="#astrology">Astrology</a>
+        <a href="#prayers">Prayers</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="intro-section">
+        <div class="intro-text">
+          <p>
+            This site is a basic start for a bigger idea I have. I want it to be
+            a place for <strong>myths</strong>, <strong>rituals</strong>,
+            <strong>astrology</strong>, prayers, herbs, symbols, and different
+            spiritual traditions from around the world. Later on I would like to
+            add things like an astrology calendar, a sign calculator, and a
+            grimoire index where people can look through different topics. For
+            now I am just building the first simple page and learning how the
+            HTML works. One topic I think is interesting is
+            <a href="https://en.wikipedia.org/wiki/Walpurgis_Night">
+              Walpurgis Night
+            </a>.
+          </p>
+        </div>
+
+        <img
+          class="moon-image"
+          src="images/grimoire.jpg"
+          alt="Picture of the moon, very mystical"
+        />
+      </section>
+
+      <section class="theme-section" aria-labelledby="theme-heading">
+        <h2 id="theme-heading">Choose Theme</h2>
+        <div class="button-row">
+          <button id="moonlight-theme-button" type="button">
+            Moonlight Theme
+          </button>
+          <button id="solar-theme-button" type="button">Solar Theme</button>
+          <button id="forest-theme-button" type="button">Forest Theme</button>
+          <button id="desert-theme-button" type="button">Desert Theme</button>
+        </div>
+      </section>
+
+      <section
+        class="scribe-section"
+        id="galdralag-phrase-scribe"
+        aria-labelledby="scribe-heading"
+      >
+        <h2 id="scribe-heading">Galdralag Phrase Scribe</h2>
+        <p class="section-note">
+          A small Gemini-powered phrase tool. It rewrites your phrase in a
+          short fictional grimoire style.
+        </p>
+
+        <label for="scribe-phrase">Enter a phrase:</label>
+        <textarea
+          id="scribe-phrase"
+          rows="5"
+          placeholder="Write a short phrase here..."
+        ></textarea>
+
+        <label for="scribe-style">Choose a style:</label>
+        <select id="scribe-style">
+          <option value="soft">Soft and reflective</option>
+          <option value="ancient">Ancient and mysterious</option>
+          <option value="ceremonial">Ceremonial</option>
+        </select>
+
+        <button id="scribe-button" type="button">Scribe Phrase</button>
+        <p id="scribe-output" class="scribe-output" aria-live="polite"></p>
+      </section>
+
+      <section id="grimoire-index">
+        <h2>Grimoire Index</h2>
+        <p>This section will later hold topics, symbols, herbs, and notes.</p>
+      </section>
+
+      <section id="rituals">
+        <h2>Rituals</h2>
+        <p>This section will later hold ritual notes and ideas.</p>
+      </section>
+
+      <section id="myths">
+        <h2>Myths</h2>
+        <p>This section will later hold myths and stories from different places.</p>
+      </section>
+
+      <section id="astrology">
+        <h2>Astrology</h2>
+        <p>This section will later hold astrology notes and calendar ideas.</p>
+      </section>
+
+      <section id="prayers">
+        <h2>Prayers</h2>
+        <p>This section will later hold prayers and spiritual writing.</p>
+      </section>
+    </main>
+  </body>
+</html>
