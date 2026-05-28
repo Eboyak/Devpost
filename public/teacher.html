@@ -23,52 +23,66 @@
       </nav>
     </header>
 
-    <main>
-      <section>
-        <h2>Gemini Guru / Teacher</h2>
-        <p>
-          Ask a question and choose a tradition or study area. The teacher gives
-          a short educational reflection with a little mystical style, but it is
-          not a final authority.
-        </p>
-        <p class="section-note">
-          Use this as a starting point. For serious study, check academic books,
-          primary sources, and people connected to the tradition.
-        </p>
+    <main class="teacher-page">
+      <section class="hero-panel">
+        <div>
+          <p class="eyebrow">Guided study tool</p>
+          <h2>Gemini Guru / Teacher</h2>
+          <p>
+            Ask a question and choose a tradition or study area. The teacher
+            gives a short educational reflection with a little mystical style,
+            but it is not a final authority.
+          </p>
+          <p class="section-note">
+            Use this as a starting point. For serious study, check academic
+            books, primary sources, and people connected to the tradition.
+          </p>
+        </div>
       </section>
 
-      <section class="feature-section" aria-labelledby="teacher-heading">
-        <h2 id="teacher-heading">Ask the Teacher</h2>
+      <section class="teacher-layout" aria-labelledby="teacher-heading">
+        <div class="teacher-form-panel">
+          <h2 id="teacher-heading">Ask the Teacher</h2>
 
-        <label for="teacher-tradition">Choose a tradition or study area:</label>
-        <select id="teacher-tradition">
-          <option value="Norse">Norse</option>
-          <option value="Greek">Greek</option>
-          <option value="Egyptian">Egyptian</option>
-          <option value="Celtic">Celtic</option>
-          <option value="Buddhist">Buddhist</option>
-          <option value="Hindu">Hindu</option>
-          <option value="Christian Mysticism">Christian Mysticism</option>
-          <option value="Islamic Mysticism">Islamic Mysticism</option>
-          <option value="Jewish Mysticism">Jewish Mysticism</option>
-          <option value="Taoism">Taoism</option>
-          <option value="Shinto">Shinto</option>
-          <option value="Astrology">Astrology</option>
-          <option value="Folk Magic">Folk Magic</option>
-          <option value="Indigenous Traditions">
-            Indigenous Traditions, with extra caution and respect
-          </option>
-        </select>
+          <label for="teacher-tradition">Choose a tradition or study area:</label>
+          <select id="teacher-tradition">
+            <option value="Norse">Norse</option>
+            <option value="Greek">Greek</option>
+            <option value="Egyptian">Egyptian</option>
+            <option value="Celtic">Celtic</option>
+            <option value="Buddhist">Buddhist</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Christian Mysticism">Christian Mysticism</option>
+            <option value="Islamic Mysticism">Islamic Mysticism</option>
+            <option value="Jewish Mysticism">Jewish Mysticism</option>
+            <option value="Taoism">Taoism</option>
+            <option value="Shinto">Shinto</option>
+            <option value="Astrology">Astrology</option>
+            <option value="Folk Magic">Folk Magic</option>
+            <option value="Indigenous Traditions">
+              Indigenous Traditions, with extra caution and respect
+            </option>
+          </select>
 
-        <label for="teacher-question">Ask a question:</label>
-        <textarea
-          id="teacher-question"
-          rows="6"
-          placeholder="Example: What does the moon symbolize in this tradition?"
-        ></textarea>
+          <label for="teacher-question">Ask a question:</label>
+          <textarea
+            id="teacher-question"
+            rows="7"
+            placeholder="Example: What does the moon symbolize in this tradition?"
+          ></textarea>
 
-        <button id="teacher-button" type="button">Ask Teacher</button>
-        <p id="teacher-output" class="response-box" aria-live="polite"></p>
+          <button id="teacher-button" type="button">Ask Teacher</button>
+        </div>
+
+        <div
+          id="teacher-output"
+          class="teacher-answer response-box"
+          aria-live="polite"
+        >
+          <p class="section-note">
+            Your answer will appear here in a cleaner study-card format.
+          </p>
+        </div>
       </section>
     </main>
   </body>

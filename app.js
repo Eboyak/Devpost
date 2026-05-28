@@ -27,6 +27,25 @@ function geminiKeyErrorMessage() {
   return "Missing or placeholder GEMINI_API_KEY in the .env file.";
 }
 
+function parseTeacherResponse(responseText) {
+  const cleanedText = responseText
+    .replace("```json", "")
+    .replace("```", "")
+    .trim();
+
+  try {
+    return JSON.parse(cleanedText);
+  } catch (error) {
+    return {
+      title: "Teacher Response",
+      summary: cleanedText,
+      keyPoints: [],
+      reflection: "",
+      studyNote: "For deeper study, verify this with academic sources, primary texts, and community voices.",
+    };
+  }
+}
+
 async function saveAiInteraction(toolName, prompt, response, details) {
   try {
     await prisma.aiInteraction.create({
@@ -181,12 +200,12 @@ app.post("/api/teacher", async function (req, res) {
 
   const prompt =
     "You are the Gemini Teacher for a website called My Digital Grimoire.\n" +
-    "Answer as an educational spiritual studies guide.\n" +
-    "Use an academic foundation, but give the writing a small mystical flair.\n" +
-    "Do not invent citations or pretend to be a final authority.\n" +
-    "Do not claim spiritual initiation, perfect historical accuracy, or medical/legal advice.\n" +
-    "Encourage the user to check academic sources, primary texts, and community voices for deeper study.\n" +
-    "Keep the answer respectful, helpful, and readable.\n" +
+    "Answer as an educational spiritual studies guide with a light mystical tone.\n" +
+    "Return only valid JSON. Do not use Markdown. Do not wrap the JSON in code fences.\n" +
+    "Use this exact JSON shape:\n" +
+    "{\"title\":\"Short answer title\",\"summary\":\"2-3 sentence direct answer\",\"keyPoints\":[\"point one\",\"point two\",\"point three\"],\"reflection\":\"Short mystical but grounded reflection\",\"studyNote\":\"Reminder to verify with academic, primary, and community sources\"}\n" +
+    "Keep the answer concise and readable.\n" +
+    "Do not invent citations, pretend to be a final authority, claim spiritual initiation, or claim perfect historical accuracy.\n" +
     "Selected tradition or study area: " +
     tradition +
     "\n" +
@@ -201,15 +220,17 @@ app.post("/api/teacher", async function (req, res) {
       model: "gemini-2.5-flash",
       contents: prompt,
     });
+    const teacherAnswer = parseTeacherResponse(response.text);
+    const answerForLog = JSON.stringify(teacherAnswer);
 
-    await saveAiInteraction("teacher", prompt, response.text, {
+    await saveAiInteraction("teacher", prompt, answerForLog, {
       theme: theme,
       style: null,
       tradition: tradition,
     });
 
     res.json({
-      result: response.text,
+      result: teacherAnswer,
     });
   } catch (error) {
     console.error(error);
