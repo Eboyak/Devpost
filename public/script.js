@@ -98,7 +98,7 @@ function setupMagicEffects() {
   }
 
   document.addEventListener("mousemove", function (event) {
-    if (Math.random() < 0.35) {
+    if (Math.random() < 0.18) {
       createSparkle(event.clientX, event.clientY);
     }
   });
