@@ -128,10 +128,17 @@ section::before,
 
 .hero-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
   align-items: center;
   gap: 26px;
   padding: 30px;
+}
+
+.split-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 340px);
+  align-items: center;
+  gap: 22px;
 }
 
 .hero-copy h2 {
@@ -334,10 +341,11 @@ select:focus {
 .ornament-image,
 .moon-image {
   width: 100%;
-  max-width: 340px;
+  max-width: 420px;
   border-radius: var(--radius);
   border: 2px solid rgba(240, 229, 209, 0.58);
   box-shadow: 0 0 22px rgba(214, 199, 255, 0.22);
+  object-fit: cover;
 }
 
 .artwork-caption {
@@ -459,6 +467,7 @@ body.desert {
 
 @media (max-width: 700px) {
   .hero-panel,
+  .split-panel,
   .teacher-layout {
     display: flex;
     flex-direction: column;
