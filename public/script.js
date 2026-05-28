@@ -11,7 +11,9 @@ function initPage() {
   }
 
   setupThemeButtons();
+  setupCursorButtons();
   setupScribeButton();
+  setupMagicEffects();
 }
 
 function setupThemeButtons() {
@@ -53,6 +55,82 @@ function applyTheme(themeName) {
 
   // Save the theme so the page can use it again after refreshing.
   localStorage.setItem("selectedTheme", themeName);
+}
+
+function setupCursorButtons() {
+  var savedCursor = localStorage.getItem("selectedCursor") || "default";
+  var defaultButton = document.getElementById("default-cursor-button");
+  var wandButton = document.getElementById("wand-cursor-button");
+  var bladeButton = document.getElementById("blade-cursor-button");
+
+  applyCursor(savedCursor);
+
+  if (defaultButton !== null) {
+    defaultButton.addEventListener("click", function () {
+      applyCursor("default");
+    });
+  }
+
+  if (wandButton !== null) {
+    wandButton.addEventListener("click", function () {
+      applyCursor("wand");
+    });
+  }
+
+  if (bladeButton !== null) {
+    bladeButton.addEventListener("click", function () {
+      applyCursor("blade");
+    });
+  }
+}
+
+function applyCursor(cursorName) {
+  document.body.classList.remove("cursor-default", "cursor-wand", "cursor-blade");
+  document.body.classList.add("cursor-" + cursorName);
+  localStorage.setItem("selectedCursor", cursorName);
+}
+
+function setupMagicEffects() {
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reducedMotion) {
+    return;
+  }
+
+  document.addEventListener("mousemove", function (event) {
+    if (Math.random() < 0.35) {
+      createSparkle(event.clientX, event.clientY);
+    }
+  });
+
+  document.addEventListener("click", function (event) {
+    createClickGlow(event.clientX, event.clientY);
+  });
+}
+
+function createSparkle(xPosition, yPosition) {
+  var sparkle = document.createElement("span");
+  sparkle.className = "cursor-sparkle";
+  sparkle.textContent = "*";
+  sparkle.style.left = xPosition + "px";
+  sparkle.style.top = yPosition + "px";
+  document.body.appendChild(sparkle);
+
+  setTimeout(function () {
+    sparkle.remove();
+  }, 700);
+}
+
+function createClickGlow(xPosition, yPosition) {
+  var glow = document.createElement("span");
+  glow.className = "click-glow";
+  glow.style.left = xPosition + "px";
+  glow.style.top = yPosition + "px";
+  document.body.appendChild(glow);
+
+  setTimeout(function () {
+    glow.remove();
+  }, 650);
 }
 
 function setupScribeButton() {
