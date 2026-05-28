@@ -3,11 +3,6 @@ window.addEventListener("load", initPage);
 // initPage runs after the page loads, so the HTML buttons already exist.
 function initPage() {
   var savedTheme = localStorage.getItem("selectedTheme");
-  var moonlightButton = document.getElementById("moonlight-theme-button");
-  var solarButton = document.getElementById("solar-theme-button");
-  var forestButton = document.getElementById("forest-theme-button");
-  var desertButton = document.getElementById("desert-theme-button");
-  var scribeButton = document.getElementById("scribe-button");
 
   // localStorage remembers small pieces of information after a refresh.
   // Here it remembers which theme the visitor picked last.
@@ -15,24 +10,40 @@ function initPage() {
     applyTheme(savedTheme);
   }
 
-  // These button event listeners call applyTheme with the correct theme name.
-  moonlightButton.addEventListener("click", function () {
-    applyTheme("moonlight");
-  });
+  setupThemeButtons();
+  setupScribeButton();
+}
 
-  solarButton.addEventListener("click", function () {
-    applyTheme("solar");
-  });
+function setupThemeButtons() {
+  var moonlightButton = document.getElementById("moonlight-theme-button");
+  var solarButton = document.getElementById("solar-theme-button");
+  var forestButton = document.getElementById("forest-theme-button");
+  var desertButton = document.getElementById("desert-theme-button");
 
-  forestButton.addEventListener("click", function () {
-    applyTheme("forest");
-  });
+  // These checks let this shared file work on pages without theme buttons.
+  if (moonlightButton !== null) {
+    moonlightButton.addEventListener("click", function () {
+      applyTheme("moonlight");
+    });
+  }
 
-  desertButton.addEventListener("click", function () {
-    applyTheme("desert");
-  });
+  if (solarButton !== null) {
+    solarButton.addEventListener("click", function () {
+      applyTheme("solar");
+    });
+  }
 
-  scribeButton.addEventListener("click", askScribe);
+  if (forestButton !== null) {
+    forestButton.addEventListener("click", function () {
+      applyTheme("forest");
+    });
+  }
+
+  if (desertButton !== null) {
+    desertButton.addEventListener("click", function () {
+      applyTheme("desert");
+    });
+  }
 }
 
 function applyTheme(themeName) {
@@ -42,6 +53,14 @@ function applyTheme(themeName) {
 
   // Save the theme so the page can use it again after refreshing.
   localStorage.setItem("selectedTheme", themeName);
+}
+
+function setupScribeButton() {
+  var scribeButton = document.getElementById("scribe-button");
+
+  if (scribeButton !== null) {
+    scribeButton.addEventListener("click", askScribe);
+  }
 }
 
 async function askScribe() {

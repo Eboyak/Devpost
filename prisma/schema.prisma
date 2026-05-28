@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ContentPage {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  summary   String?  @db.Text
+  body      String?  @db.Text
+  isLive    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GrimoireEntry {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  title     String
+  category  String
+  summary   String?  @db.Text
+  body      String?  @db.Text
+  isLive    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  slug        String   @unique
+  name        String
+  description String?  @db.Text
+  priceCents  Int?
+  status      String   @default("coming_soon")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SocialLink {
+  id        Int      @id @default(autoincrement())
+  label     String   @unique
+  url       String?
+  note      String?  @db.Text
+  isLive    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AiInteraction {
+  id        Int      @id @default(autoincrement())
+  toolName  String
+  prompt    String   @db.Text
+  response  String?  @db.Text
+  theme     String?
+  style     String?
+  tradition String?
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Teacher | My Digital Grimoire</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <script src="teacher.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>My Digital Grimoire</h1>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="store.html">Store</a>
+        <a href="teachings.html">Teachings</a>
+        <a href="teacher.html">Gemini Teacher</a>
+        <a href="tools.html">Personal Tools</a>
+        <a href="grimoire.html">Grimoire Index</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Gemini Guru / Teacher</h2>
+        <p>
+          Ask a question and choose a tradition or study area. The teacher gives
+          a short educational reflection with a little mystical style, but it is
+          not a final authority.
+        </p>
+        <p class="section-note">
+          Use this as a starting point. For serious study, check academic books,
+          primary sources, and people connected to the tradition.
+        </p>
+      </section>
+
+      <section class="feature-section" aria-labelledby="teacher-heading">
+        <h2 id="teacher-heading">Ask the Teacher</h2>
+
+        <label for="teacher-tradition">Choose a tradition or study area:</label>
+        <select id="teacher-tradition">
+          <option value="Norse">Norse</option>
+          <option value="Greek">Greek</option>
+          <option value="Egyptian">Egyptian</option>
+          <option value="Celtic">Celtic</option>
+          <option value="Buddhist">Buddhist</option>
+          <option value="Hindu">Hindu</option>
+          <option value="Christian Mysticism">Christian Mysticism</option>
+          <option value="Islamic Mysticism">Islamic Mysticism</option>
+          <option value="Jewish Mysticism">Jewish Mysticism</option>
+          <option value="Taoism">Taoism</option>
+          <option value="Shinto">Shinto</option>
+          <option value="Astrology">Astrology</option>
+          <option value="Folk Magic">Folk Magic</option>
+          <option value="Indigenous Traditions">
+            Indigenous Traditions, with extra caution and respect
+          </option>
+        </select>
+
+        <label for="teacher-question">Ask a question:</label>
+        <textarea
+          id="teacher-question"
+          rows="6"
+          placeholder="Example: What does the moon symbolize in this tradition?"
+        ></textarea>
+
+        <button id="teacher-button" type="button">Ask Teacher</button>
+        <p id="teacher-output" class="response-box" aria-live="polite"></p>
+      </section>
+    </main>
+  </body>
+</html>

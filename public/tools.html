@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Tools | My Digital Grimoire</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <script src="tools.js" defer></script>
+  </head>
+
+  <body>
+    <header>
+      <h1>My Digital Grimoire</h1>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="store.html">Store</a>
+        <a href="teachings.html">Teachings</a>
+        <a href="teacher.html">Gemini Teacher</a>
+        <a href="tools.html">Personal Tools</a>
+        <a href="grimoire.html">Grimoire Index</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Personal Journey Tools</h2>
+        <p>
+          These tools are simple symbolic starting points. They are not a full
+          birth chart yet, but they help build the foundation for a bigger set
+          of calculators later.
+        </p>
+      </section>
+
+      <section class="tool-grid">
+        <article class="tool-card">
+          <h2>Birth Number Calculator</h2>
+          <p class="section-note">
+            Enter your birth date to reduce the numbers into a single symbolic
+            birth number.
+          </p>
+
+          <label for="birth-date">Birth date:</label>
+          <input id="birth-date" type="date" />
+
+          <button id="birth-number-button" type="button">
+            Calculate Birth Number
+          </button>
+          <p id="birth-number-output" class="response-box"></p>
+        </article>
+
+        <article class="tool-card">
+          <h2>Western Zodiac Sign</h2>
+          <p class="section-note">
+            Enter a month and day to find a basic Western sun sign.
+          </p>
+
+          <label for="zodiac-month">Month:</label>
+          <select id="zodiac-month">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+
+          <label for="zodiac-day">Day:</label>
+          <input id="zodiac-day" type="number" min="1" max="31" />
+
+          <button id="zodiac-button" type="button">Find Zodiac Sign</button>
+          <p id="zodiac-output" class="response-box"></p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

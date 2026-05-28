@@ -74,6 +74,7 @@ section {
 }
 
 button,
+input,
 select,
 textarea {
   font: inherit;
@@ -104,11 +105,13 @@ label {
   font-weight: bold;
 }
 
+input,
 textarea,
 select {
   box-sizing: border-box;
   width: 100%;
   margin-top: 6px;
+  margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #bba98f;
   border-radius: 6px;
@@ -122,6 +125,56 @@ select {
   min-height: 24px;
   padding-top: 10px;
   font-style: italic;
+}
+
+.card-grid,
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card,
+.tool-card {
+  padding: 16px;
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid #d5c6ad;
+  border-radius: 8px;
+}
+
+.card h3,
+.tool-card h2 {
+  margin-top: 0;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  color: #fffaf1;
+  background-color: #4b375d;
+  border-radius: 5px;
+}
+
+.feature-section button,
+.tool-card button,
+.scribe-section button {
+  margin-top: 8px;
+}
+
+.response-box {
+  min-height: 28px;
+  padding: 12px;
+  white-space: pre-wrap;
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid #d5c6ad;
+  border-radius: 8px;
 }
 
 /* Moonlight theme */
@@ -140,6 +193,13 @@ body.moonlight section {
   background-color: #1e2442;
   border-color: #6c68a0;
   box-shadow: 0 0 18px rgba(208, 208, 255, 0.12);
+}
+
+body.moonlight .card,
+body.moonlight .tool-card,
+body.moonlight .response-box {
+  background-color: rgba(20, 25, 49, 0.7);
+  border-color: #6c68a0;
 }
 
 body.moonlight nav a,
@@ -167,6 +227,7 @@ body.moonlight button:disabled {
 }
 
 body.moonlight textarea,
+body.moonlight input,
 body.moonlight select {
   color: #f2ecff;
   background-color: #141931;
@@ -195,6 +256,13 @@ body.solar section {
   box-shadow: 0 0 18px rgba(237, 154, 35, 0.18);
 }
 
+body.solar .card,
+body.solar .tool-card,
+body.solar .response-box {
+  background-color: rgba(255, 253, 243, 0.7);
+  border-color: #e5a93d;
+}
+
 body.solar nav a,
 body.solar a {
   color: #8a3f0b;
@@ -220,6 +288,7 @@ body.solar button:disabled {
 }
 
 body.solar textarea,
+body.solar input,
 body.solar select {
   color: #3a2108;
   background-color: #fffdf3;
@@ -248,6 +317,13 @@ body.forest section {
   box-shadow: 0 0 18px rgba(119, 150, 82, 0.14);
 }
 
+body.forest .card,
+body.forest .tool-card,
+body.forest .response-box {
+  background-color: rgba(27, 45, 32, 0.7);
+  border-color: #617944;
+}
+
 body.forest nav a,
 body.forest a {
   color: #cfe8a1;
@@ -273,6 +349,7 @@ body.forest button:disabled {
 }
 
 body.forest textarea,
+body.forest input,
 body.forest select {
   color: #f0f4df;
   background-color: #1b2d20;
@@ -301,6 +378,13 @@ body.desert section {
   box-shadow: 0 0 18px rgba(125, 56, 40, 0.16);
 }
 
+body.desert .card,
+body.desert .tool-card,
+body.desert .response-box {
+  background-color: rgba(255, 247, 232, 0.55);
+  border-color: #a75f3b;
+}
+
 body.desert nav a,
 body.desert a {
   color: #7d3828;
@@ -326,6 +410,7 @@ body.desert button:disabled {
 }
 
 body.desert textarea,
+body.desert input,
 body.desert select {
   color: #3a1f18;
   background-color: #fff7e8;
