@@ -7,20 +7,24 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
+const geminiApiKey = process.env.GEMINI_API_KEY
+  ? process.env.GEMINI_API_KEY.trim()
+  : "";
 
 // The API key stays on the server so it is not visible in browser JavaScript.
 const ai = new GoogleGenAI({
-  apiKey: process.env.GEMINI_API_KEY,
+  apiKey: geminiApiKey,
 });
 
 app.use(express.static("public"));
 app.use(express.json());
 
 function geminiKeyIsMissing() {
-  return (
-    !process.env.GEMINI_API_KEY ||
-    process.env.GEMINI_API_KEY === "your_api_key_here"
-  );
+  return !geminiApiKey || geminiApiKey.includes("your_");
+}
+
+function geminiKeyErrorMessage() {
+  return "Missing or placeholder GEMINI_API_KEY in the .env file.";
 }
 
 async function saveAiInteraction(toolName, prompt, response, details) {
@@ -115,7 +119,7 @@ app.post("/api/scribe", async function (req, res) {
 
   if (geminiKeyIsMissing()) {
     return res.status(500).json({
-      error: "Missing GEMINI_API_KEY in the .env file.",
+      error: geminiKeyErrorMessage(),
     });
   }
 
@@ -171,7 +175,7 @@ app.post("/api/teacher", async function (req, res) {
 
   if (geminiKeyIsMissing()) {
     return res.status(500).json({
-      error: "Missing GEMINI_API_KEY in the .env file.",
+      error: geminiKeyErrorMessage(),
     });
   }
 
